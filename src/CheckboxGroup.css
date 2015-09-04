@@ -13,5 +13,11 @@
 
 @pager-active-bg:                      @pagination-active-bg;
 @pager-active-color:                   @pagination-active-color;*/
+.kuma-checkbox-group > label {
+  display: inline-block;
+}
+.kuma-checkbox-group > label span {
+  padding: 0px 20px 0px 4px;
+}
 
 /*# sourceMappingURL=CheckboxGroup.css.map */

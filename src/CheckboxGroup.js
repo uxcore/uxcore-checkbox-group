@@ -63,11 +63,15 @@ class CheckboxGroup extends React.Component {
 CheckboxGroup.Item = Item;
 
 CheckboxGroup.defaultProps = {
+    value: [],
+    onChange: () => {}
 }
 
 
 // http://facebook.github.io/react/docs/reusable-components.html
 CheckboxGroup.propTypes = {
+    value: React.PropTypes.array,
+    onChange: React.PropTypes.func
 }
 
 CheckboxGroup.displayName = "CheckboxGroup";
