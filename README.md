@@ -18,21 +18,63 @@ $ gulp server
 
 ## Usage
 
-### demo
-http://uxcore.github.io/uxcore-checkbox-group/
+```javascript
+let classnames = require('classnames');
 
-### API
+let CheckboxGroup = require('../src');
+let Item = CheckboxGroup.Item
 
-### props
+class Demo extends React.Component {
 
-CheckboxGroup
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: ["air"]
+        }
+    }
+
+    handleChange(value) {
+        this.setState({
+            value: value
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <CheckboxGroup onChange={this.handleChange.bind(this)} value={this.state.value}>
+                    <Item text="天空天空天空" value="air"/>
+                    <Item text="大海大海大海" value="sea"/>
+                    <Item text="陆地陆地陆地" value="land"/>
+                    <Item text="飞机飞机飞机" value="plane"/>
+                    <Item text="火车飞机飞机" value="train"/>
+
+                </CheckboxGroup>
+            </div>
+        );
+    }
+};
+
+module.exports = Demo;
+```
+
+## demo
+http://uxcore.github.io/
+
+## API
+
+## Props
+
+### CheckboxGroup
 
 | 配置项 | 类型 | 必填 | 默认值 | 功能/备注 |
 |---|---|---|---|---|
-|value|array|required|[]|与 React 受限组件表现一致，选中项与 value 保持一致，数组中的值与 item 的 value 相对应|
+|value|array|required|[]|由 value 组成地数组，与 React 受限组件表现一致，选中项与 value 保持一致，数组中的值与 item 的 value 相对应|
 |onChange|function|required|-|与 React 受限组件表现一致，在 checkbox 群发生改变时触发，借此来更改 value|
 
-CheckboxItem
+### CheckboxItem
+
+> 通过 CheckboxGroup.Item 取得。
 
 | 配置项 | 类型 | 必填 | 默认值 | 功能/备注 |
 |---|---|---|---|---|
