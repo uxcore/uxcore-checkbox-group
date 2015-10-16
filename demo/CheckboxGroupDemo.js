@@ -17,7 +17,8 @@ class Demo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ["air"]
+            value: ["air"],
+            disabled: false
         }
     }
 
@@ -29,14 +30,15 @@ class Demo extends React.Component {
 
     handleChange2() {
         this.setState({
-            value: ['air']
+            value: ['air'],
+            disabled: true
         })
     }
 
     render() {
         return (
             <div>
-                <CheckboxGroup onChange={this.handleChange.bind(this)} value={this.state.value}>
+                <CheckboxGroup disabled={this.state.disabled} onChange={this.handleChange.bind(this)} value={this.state.value}>
                     <Item text="天空天空天空" value="air"/>
                     <Item text="大海大海大海" value="sea"/>
                     <Item text="陆地陆地陆地" value="land"/>

@@ -71,6 +71,7 @@ http://uxcore.github.io/
 |---|---|---|---|---|
 |value|array|required|[]|由 value 组成地数组，与 React 受限组件表现一致，选中项与 value 保持一致，数组中的值与 item 的 value 相对应|
 |onChange|function|required|-|与 React 受限组件表现一致，在 checkbox 群发生改变时触发，借此来更改 value|
+|disabled|boolean|optional|false|是否为 disable 状态|
 
 ### CheckboxItem
 
