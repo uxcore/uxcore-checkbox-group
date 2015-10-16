@@ -17,7 +17,12 @@ class CheckboxGroup extends React.Component {
 
     componentWillMount() {
         let me = this;
-        me.selected = me._copy(me.props.value) || []
+        me.selected = me._copy(me.props.value) || [];
+    }
+
+    componentDidUpdate() {
+        let me = this;
+        me.selected = me._copy(me.props.value) || [];
     }
 
     _copy(a) {

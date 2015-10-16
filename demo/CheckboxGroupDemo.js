@@ -10,6 +10,7 @@ let classnames = require('classnames');
 
 let CheckboxGroup = require('../src');
 let Item = CheckboxGroup.Item
+let Button = require('uxcore-button');
 
 class Demo extends React.Component {
 
@@ -26,8 +27,13 @@ class Demo extends React.Component {
         })
     }
 
+    handleChange2() {
+        this.setState({
+            value: ['air']
+        })
+    }
+
     render() {
-        console.log(this.state.value)
         return (
             <div>
                 <CheckboxGroup onChange={this.handleChange.bind(this)} value={this.state.value}>
@@ -38,6 +44,7 @@ class Demo extends React.Component {
                     <Item text="火车飞机飞机" value="train"/>
 
                 </CheckboxGroup>
+                <Button onClick={this.handleChange2.bind(this)}>改变 state</Button>
             </div>
         );
     }
