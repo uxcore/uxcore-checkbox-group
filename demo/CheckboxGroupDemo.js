@@ -27,6 +27,7 @@ class Demo extends React.Component {
     }
 
     render() {
+        console.log(this.state.value)
         return (
             <div>
                 <CheckboxGroup onChange={this.handleChange.bind(this)} value={this.state.value}>

@@ -7,6 +7,7 @@
  */
 
 let Item = require("./CheckboxItem");
+let assign = require("object-assign");
 
 class CheckboxGroup extends React.Component {
 
@@ -16,7 +17,11 @@ class CheckboxGroup extends React.Component {
 
     componentWillMount() {
         let me = this;
-        me.selected = me.props.value || [];
+        me.selected = me._copy(me.props.value) || []
+    }
+
+    _copy(a) {
+        return JSON.parse(JSON.stringify(a))
     }
 
     _processChild() {
@@ -37,8 +42,8 @@ class CheckboxGroup extends React.Component {
 
     _handleChange(checked, value) {
         let me = this;
-        console.log(value);
         if (checked) {
+            // me.selected = me.selected.concat([value]);
             me.selected.push(value);
         }
         else {
@@ -46,8 +51,7 @@ class CheckboxGroup extends React.Component {
                 return item != value;
             })
         }
-        console.log(me.selected);
-        me.props.onChange(me.selected);
+        me.props.onChange(JSON.parse(JSON.stringify(me.selected)));
     }
 
     render() {
