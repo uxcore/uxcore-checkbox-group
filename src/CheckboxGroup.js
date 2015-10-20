@@ -36,7 +36,7 @@ class CheckboxGroup extends React.Component {
         let elements = React.Children.map(me.props.children, (child, index) => {
             if (!!child.type  && child.type.displayName == "CheckboxItem") {
                 return React.cloneElement(child, {
-                    disabled: me.props.disabled,
+                    jsxdisabled: me.props.disabled,
                     onChange: me._handleChange.bind(me),
                     key: index,
                     checked: (me.props.value.indexOf(child.props.value) != -1)

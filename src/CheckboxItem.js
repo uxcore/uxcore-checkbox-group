@@ -8,9 +8,16 @@ class CheckboxItem extends React.Component {
     }
     render() {
         let me = this;
+        let disabled = false;
+        if ('disabled' in me.props) {
+            disabled = me.props.disabled;
+        }
+        else {
+            disabled = me.props.jsxdisabled;
+        }
         return (
             <label>
-                <input type="checkbox" disabled={me.props.disabled} ref="checkbox" checked={me.props.checked} className={me.props.className} onChange={me._handleChange.bind(me)}/>
+                <input type="checkbox" disabled={disabled} ref="checkbox" checked={me.props.checked} className={me.props.className} onChange={me._handleChange.bind(me)}/>
                 <s></s>
                 {me.props.text}
             </label>
@@ -21,7 +28,6 @@ class CheckboxItem extends React.Component {
 CheckboxItem.defaultProps = {
     text: "",
     value: "",
-    disabled: false,
     className: "kuma-checkbox",
     onChange: function() {}
 }
