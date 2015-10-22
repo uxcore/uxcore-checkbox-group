@@ -63,7 +63,7 @@ class CheckboxGroup extends React.Component {
     render() {
         let me = this;
         return (
-            <div className={me.props.className} style={me.props.style}>
+            <div className={me.props.className}>
                 {me._processChild()}
             </div>
         );
@@ -76,8 +76,7 @@ CheckboxGroup.defaultProps = {
     value: [],
     onChange: () => {},
     disabled: false,
-    className: 'kuma-checkbox-group',
-    style: {}
+    className: 'kuma-checkbox-group'
 }
 
 
@@ -86,8 +85,7 @@ CheckboxGroup.propTypes = {
     value: React.PropTypes.array,
     onChange: React.PropTypes.func,
     disabled: React.PropTypes.bool,
-    className: React.PropTypes.string,
-    style: React.PropTypes.object
+    className: React.PropTypes.string
 }
 
 CheckboxGroup.displayName = "CheckboxGroup";

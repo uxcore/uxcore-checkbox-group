@@ -36,14 +36,15 @@ class Demo extends React.Component {
     }
 
     render() {
+
         return (
             <div>
                 <CheckboxGroup disabled={this.state.disabled} onChange={this.handleChange.bind(this)} value={this.state.value}>
-                    <Item value="air">天空天空天空</Item>
-                    <Item value="sea">大海大海大海</Item>
-                    <Item value="land" disabled={true}>陆地陆地陆地</Item>
-                    <Item value="plane">飞机飞机飞机</Item>
-                    <Item value="train">火车飞机飞机</Item>
+                  <Item text="天空天空天空" value="air"/>
+                  <Item text="<b>大海大海大海</b>" value="sea"/>
+                  <Item text="陆地陆地陆地" disabled={true} value="land"/>
+                  <Item text="飞机飞机飞机" value="plane"/>
+                  <Item text="火车飞机飞机" value="train"/>
 
                 </CheckboxGroup>
                 <Button onClick={this.handleChange2.bind(this)}>改变 state</Button>

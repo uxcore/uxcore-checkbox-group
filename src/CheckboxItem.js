@@ -16,10 +16,10 @@ class CheckboxItem extends React.Component {
             disabled = me.props.jsxdisabled;
         }
         return (
-            <label style={me.props.labelStyle}>
+            <label>
                 <input type="checkbox" disabled={disabled} ref="checkbox" checked={me.props.checked} className={me.props.className} onChange={me._handleChange.bind(me)}/>
                 <s></s>
-                {me.props.children}
+                <span dangerouslySetInnerHTML={{__html: me.props.text}} />
             </label>
         );
     }
@@ -28,16 +28,14 @@ class CheckboxItem extends React.Component {
 CheckboxItem.defaultProps = {
     value: "",
     className: "kuma-checkbox",
-    onChange: function() {},
-    labelStyle: {}
+    onChange: function() {}
 }
 
 CheckboxItem.propTypes = {
     value: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     className: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    labelStyle:React.PropTypes.object
+    onChange: React.PropTypes.func
 }
 
 CheckboxItem.displayName = "CheckboxItem";
