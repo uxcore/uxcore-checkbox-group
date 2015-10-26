@@ -81,6 +81,7 @@ http://uxcore.github.io/
 |---|---|---|---|---|
 |text|string|optinal|-|checkbox 后面跟着的说明文字|
 |value|string|required|-|checkbox 对应的值|
+|disabled|boolean|optional|-|Item 是否为 disable 状态，具有比 Group 更高的优先级|
 
 
 
