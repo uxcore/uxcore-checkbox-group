@@ -44,7 +44,7 @@ class Demo extends React.Component {
             <div>
                 <CheckboxGroup onChange={this.handleChange.bind(this)} value={this.state.value}>
                     <Item text="天空天空天空" value="air"/>
-                    <Item text="大海大海大海" value="sea"/>
+                    <Item text="<b>大海大海大海</b>" value="sea"/>
                     <Item text="陆地陆地陆地" value="land"/>
                     <Item text="飞机飞机飞机" value="plane"/>
                     <Item text="火车飞机飞机" value="train"/>
@@ -82,6 +82,5 @@ http://uxcore.github.io/
 |text|string|optinal|-|checkbox 后面跟着的说明文字|
 |value|string|required|-|checkbox 对应的值|
 |disabled|boolean|optional|-|Item 是否为 disable 状态，具有比 Group 更高的优先级|
-
 
 
