@@ -152,20 +152,13 @@ gulp.task('publish', ['pack_build'], function() {
         ];
         inquirer.prompt(questions, function(answers) {
             pkg.version = answers.version;
+            file.writeFileFromString(JSON.stringify(pkg, null, ' '), 'package.json');
             console.log(colors.info('#### Git Info ####'));
             spawn.sync('git', ['add', '.'], {stdio: 'inherit'});
             spawn.sync('git', ['commit', '-m', 'ver. ' + pkg.version], {stdio: 'inherit'});
-            var push = spawn('git', ['push', 'origin', answers.branch]);
-            push.stdout.on('data', function (data) {
-                console.log(data);
-                console.log(colors.info('#### Npm Info ####'));
-                file.writeFileFromString(JSON.stringify(pkg, null, ' '), 'package.json');
-                spawn.sync('npm', ['publish'], {stdio: 'inherit'});
-            });
-            push.stderr.on('data', function(data) {
-                console.log(data.toString());
-            })
-            
+            spawn.sync('git', ['push', 'origin', answers.branch], {stdio: 'inherit'});
+            console.log(colors.info('#### Npm Info ####'));
+            spawn.sync('npm', ['publish'], {stdio: 'inherit'});
         })
     }, 0)
     
