@@ -155,9 +155,9 @@ gulp.task('publish', ['pack_build'], function() {
             console.log(colors.info('#### Git Info ####'));
             spawn.sync('git', ['add', '.'], {stdio: 'inherit'});
             spawn.sync('git', ['commit', '-m', 'ver. ' + pkg.version], {stdio: 'inherit'});
-            var push = spawn('git', ['push', 'origin', answers.branch], {stdio: 'pipe'});
+            var push = spawn('git', ['push', 'origin', answers.branch]);
             push.stdout.on('data', function (data) {
-              // console.log(data);
+              console.log(data);
               console.log(colors.info('#### Npm Info ####'));
               file.writeFileFromString(JSON.stringify(pkg, null, ' '), 'package.json');
               spawn.sync('npm', ['publish'], {stdio: 'inherit'});
