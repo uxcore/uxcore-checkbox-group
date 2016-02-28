@@ -1,12 +1,41 @@
 // https://github.com/gulpjs/gulp/tree/master/docs
 var gulp = require('gulp');
 var fs = require('fs');
+var inquirer = require('inquirer');
+var spawn = require('cross-spawn');
+var file = require('html-wiring');
+var colors = require('colors/safe');
+
+colors.setTheme({
+    info: ['bold', 'green']
+});
+
+var pkg = JSON.parse(file.readFileAsString('package.json'));
+
+var versionCompare = function(a, b) {
+    var aArr = a.split('.');
+    var bArr = b.split('.');
+    var larger = false;
+    for (var i = 0; i < 3; i++) {
+        if (parseInt(aArr[i]) === parseInt(bArr[i])) {
+
+        }
+        else {
+            larger = parseInt(aArr[i]) > parseInt(bArr[i]);
+            break;
+        }
+    }
+    return larger;
+}
 
 var webpack = require('webpack');
 
 // http://browsersync.io/
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+
+// https://www.npmjs.com/package/gulp-babel
+var babel = require('gulp-babel');
 
 // https://www.npmjs.com/package/gulp-less
 var less = require('gulp-less');
@@ -30,14 +59,16 @@ gulp.task('pack_demo', function(cb) {
     });
 });
 
-gulp.task('less_component', function(cb) {
-    gulp.src(['./src/**/*.less'])
-        .pipe(sourcemaps.init())
-        .pipe(less())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./src'));
-    console.info('###### less_component done ######');
-    cb();
+gulp.task('pack_build', function(cb) {
+    gulp.src(['./src/**/*.js'])
+        .pipe(babel({
+            presets: ['react', 'es2015', 'stage-1'],
+            plugins: ['add-module-exports']
+        }))
+        .pipe(gulp.dest('build'))
+        .on('end', function() {
+            cb();
+        })
 });
 
 gulp.task('less_demo', function(cb) {
@@ -69,7 +100,6 @@ gulp.task('reload_by_demo_css', ['less_demo'], function () {
 
 gulp.task('server', [
     'pack_demo',
-    'less_component',
     'less_demo'
 ], function() {
     browserSync({
@@ -81,8 +111,55 @@ gulp.task('server', [
 
     gulp.watch(['src/**/*.js', 'demo/**/*.js'], ['reload_by_js']);
 
-    gulp.watch('src/**/*.less', ['reload_by_component_css']);
+    gulp.watch('src/**/*.less', ['reload_by_demo_css']);
 
     gulp.watch('demo/**/*.less', ['reload_by_demo_css']);
 
+});
+
+gulp.task('default', ['pack_build'], function() {
+
+});
+
+gulp.task('publish', ['pack_build'], function() {
+    setTimeout(function() {
+        var questions = [
+            {
+                type: 'input',
+                name: 'version',
+                message: 'please enter the package version to publish (should be xx.xx.xx)',
+                default: pkg.version,
+                validate: function(input) {
+                    if (/\d+\.\d+\.\d+/.test(input)) {
+                        if (versionCompare(input, pkg.version)) {
+                            return true;
+                        }
+                        else {
+                            return "the version you entered should be larger than now"
+                        }
+                    }
+                    else {
+                        return "the version you entered is not valid"
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'branch',
+                message: 'which branch you want to push',
+                default: 'master'
+            }
+        ];
+        inquirer.prompt(questions, function(answers) {
+            pkg.version = answers.version;
+            file.writeFileFromString(JSON.stringify(pkg, null, ' '), 'package.json');
+            console.log(colors.info('#### Git Info ####'));
+            spawn.sync('git', ['add', '.'], {stdio: 'inherit'});
+            spawn.sync('git', ['commit', '-m', 'ver. ' + pkg.version], {stdio: 'inherit'});
+            spawn.sync('git', ['push', 'origin', answers.branch], {stdio: 'inherit'});
+            console.log(colors.info('#### Npm Info ####'));
+            spawn.sync('npm', ['publish'], {stdio: 'inherit'});
+        })
+    }, 0)
+    
 });

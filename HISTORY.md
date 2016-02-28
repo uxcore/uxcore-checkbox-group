@@ -1,3 +1,7 @@
+# 1.0.7
+
+`CHANGED` update scaffold
+
 # 1.0.6
 
 `CHANGED` prop text support rich text.

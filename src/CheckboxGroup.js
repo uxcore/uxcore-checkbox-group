@@ -8,6 +8,8 @@
 
 let Item = require("./CheckboxItem");
 let assign = require("object-assign");
+let React = require('react'); 
+let ReactDOM = require('react-dom');
 
 class CheckboxGroup extends React.Component {
 
