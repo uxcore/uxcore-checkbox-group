@@ -163,8 +163,7 @@ gulp.task('publish', ['pack_build'], function() {
                 spawn.sync('npm', ['publish'], {stdio: 'inherit'});
             });
             push.stderr.on('data', function(data) {
-                console.log("work");
-                console.log(data);
+                console.log(data.toString());
             })
             
         })
