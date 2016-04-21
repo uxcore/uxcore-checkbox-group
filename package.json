@@ -47,12 +47,12 @@
   "react-dom": "~0.14.0",
   "uxcore-button": "~0.3.1",
   "uxcore-kuma": "~1.1.0",
-  "webpack": "^1.10.5"
+  "webpack": "^1.10.5",
+  "uxcore-kuma": "~2.0.0"
  },
  "dependencies": {
   "classnames": "^2.1.2",
-  "object-assign": "^4.0.0",
-  "uxcore-kuma": "^1.1.2"
+  "object-assign": "^4.0.0"
  },
  "contributors": [],
  "license": "MIT"
