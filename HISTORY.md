@@ -1,3 +1,8 @@
+# 1.0.11
+
+* `FIX` fix vertical align bug
+* `CHANGED` remove kuma dependency
+
 # 1.0.10
 
 `CHANGED` update scaffold
