@@ -8,18 +8,16 @@
 
 @__checkbox-prefix-cls: kuma-checkbox-group;
 
-.@{__checkbox-prefix-cls} {
-    .@{__checkbox-prefix-cls}-item {
+.@{__checkbox-prefix-cls}-item {
+    display: inline-block;
+    line-height: 16px;
+    s {
+        vertical-align: top;
         display: inline-block;
-        line-height: 16px;
-        s {
-            vertical-align: top;
-            display: inline-block;
-        }
-        &-content {
-            vertical-align: top;
-            display: inline-block;
-            padding: 0px 20px 0px 10px;
-        }
     }
- }
+    &-content {
+        vertical-align: top;
+        display: inline-block;
+        padding: 0px 20px 0px 10px;
+    }
+}
