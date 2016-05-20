@@ -1,5 +1,6 @@
-let React = require('react'); 
-let ReactDOM = require('react-dom');
+const React = require('react'); 
+const ReactDOM = require('react-dom');
+const classnames = require('classnames');
 
 class CheckboxItem extends React.Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class CheckboxItem extends React.Component {
         me.props.onChange(e.currentTarget.checked, me.props.value);
     }
     render() {
-        let me = this;
+        const me = this;
+        const {prefixCls} = me.props;
         let disabled = false;
         if ('disabled' in me.props) {
             disabled = me.props.disabled;
@@ -19,10 +21,10 @@ class CheckboxItem extends React.Component {
             disabled = me.props.jsxdisabled;
         }
         return (
-            <label>
-                <input type="checkbox" disabled={disabled} ref="checkbox" checked={me.props.checked} className={me.props.className} onChange={me._handleChange.bind(me)}/>
+            <label className={`${prefixCls}`}>
+                <input type="checkbox" disabled={disabled} ref="checkbox" checked={me.props.checked} className="kuma-checkbox" onChange={me._handleChange.bind(me)}/>
                 <s></s>
-                <span dangerouslySetInnerHTML={{__html: me.props.text}} />
+                <span className={`${prefixCls}-content`} dangerouslySetInnerHTML={{__html: me.props.text}} />
             </label>
         );
     }
@@ -30,14 +32,14 @@ class CheckboxItem extends React.Component {
 
 CheckboxItem.defaultProps = {
     value: "",
-    className: "kuma-checkbox",
+    prefixCls: "kuma-checkbox-group-item",
     onChange: function() {}
 }
 
 CheckboxItem.propTypes = {
     value: React.PropTypes.string,
     disabled: React.PropTypes.bool,
-    className: React.PropTypes.string,
+    prefixCls: React.PropTypes.string,
     onChange: React.PropTypes.func
 }
 

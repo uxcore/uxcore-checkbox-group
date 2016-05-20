@@ -1,3 +1,7 @@
+# 1.1.0
+
+* `CHANGED` style & className change
+
 # 1.0.11
 
 * `FIX` fix vertical align bug
