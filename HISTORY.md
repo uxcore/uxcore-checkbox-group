@@ -1,6 +1,11 @@
 # history
 
 
+## 1.1.2
+
+* `CHANGED` new scaffold
+* `CHANGED` type of value can be `number` or `string`
+
 ## 1.1.1
 
 * `CHANGED` remove useless classname
