@@ -1,6 +1,10 @@
 # history
 
 
+## 1.1.3
+
+* `CHANGED` margin is adjusted
+
 ## 1.1.2
 
 * `CHANGED` new scaffold
