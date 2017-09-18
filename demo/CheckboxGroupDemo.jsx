@@ -8,6 +8,7 @@
 
 const Button = require('uxcore-button');
 const React = require('react');
+const Popover = require('uxcore-popover');
 
 const CheckboxGroup = require('../src');
 
@@ -44,7 +45,13 @@ class Demo extends React.Component {
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
         >
-          <Item text="天空天空天空" value="air" />
+          <Item text="天空天空天空" value="air"
+            addon={
+              <Popover overlay={<div>提示</div>}>
+                <i className='kuma-icon kuma-icon-caution' style={{color: 'blue', fontSize: '12px', 'marginLeft': '3px'}} />
+              </Popover>
+            }
+          />
           <Item text="<b>大海大海大海</b>" value="sea" />
           <Item text="陆地陆地陆地" disabled value="land" />
           <Item text="飞机飞机飞机" value="plane" />

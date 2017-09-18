@@ -25,7 +25,10 @@ class CheckboxItem extends React.Component {
           onChange={me.handleChange.bind(me)}
         />
         <s />
-        <span className={`${prefixCls}-content`} dangerouslySetInnerHTML={{ __html: me.props.text }} />
+        <span className={`${prefixCls}-content`} >
+          <span  dangerouslySetInnerHTML={{ __html: me.props.text }} />
+          {me.props.addon}
+        </span>
       </label>
     );
   }
