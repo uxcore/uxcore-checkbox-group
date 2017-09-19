@@ -1,6 +1,6 @@
 ---
 
-## uxcore-checkbox-group [![Dependency Status](http://img.shields.io/david/uxcore/uxcore-checkbox-group.svg?style=flat-square)](https://david-dm.org/uxcore/uxcore-checkbox-group) [![devDependency Status](http://img.shields.io/david/dev/uxcore/uxcore-checkbox-group.svg?style=flat-square)](https://david-dm.org/uxcore/uxcore-checkbox-group#info=devDependencies) 
+## uxcore-checkbox-group [![Dependency Status](http://img.shields.io/david/uxcore/uxcore-checkbox-group.svg?style=flat-square)](https://david-dm.org/uxcore/uxcore-checkbox-group) [![devDependency Status](http://img.shields.io/david/dev/uxcore/uxcore-checkbox-group.svg?style=flat-square)](https://david-dm.org/uxcore/uxcore-checkbox-group#info=devDependencies)
 
 ## TL;DR
 
@@ -43,7 +43,13 @@ class Demo extends React.Component {
         return (
             <div>
                 <CheckboxGroup onChange={this.handleChange.bind(this)} value={this.state.value}>
-                    <Item text="天空天空天空" value="air"/>
+                    <Item text="天空天空天空" value="air"
+                        addon={
+                        <Popover overlay={<div>提示</div>}>
+                            <i className='kuma-icon kuma-icon-caution' style={{color: 'blue', fontSize: '12px', 'marginLeft': '3px'}} />
+                        </Popover>
+                        }
+                    />
                     <Item text="<b>大海大海大海</b>" value="sea"/>
                     <Item text="陆地陆地陆地" value="land"/>
                     <Item text="飞机飞机飞机" value="plane"/>
@@ -82,5 +88,6 @@ http://uxcore.github.io/
 |text|string|optinal|-|checkbox 后面跟着的说明文字|
 |value|string|required|-|checkbox 对应的值|
 |disabled|boolean|optional|-|Item 是否为 disable 状态，具有比 Group 更高的优先级|
+|addons|jsx|optional|-|显示在label后面的添加项，可以用作checkbox的tips|
 
 
