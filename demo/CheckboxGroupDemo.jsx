@@ -19,7 +19,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'air',
+      value: ['air'],
       disabled: false,
     };
   }
@@ -45,10 +45,11 @@ class Demo extends React.Component {
           onChange={this.handleChange.bind(this)}
           value={this.state.value}
         >
-          <Item text="天空天空天空" value="air"
+          <Item
+            text="天空天空天空" value="air"
             addon={
               <Popover overlay={<div>提示</div>}>
-                <i className='kuma-icon kuma-icon-caution' style={{color: 'blue', fontSize: '12px', 'marginLeft': '3px'}} />
+                <i className="kuma-icon kuma-icon-caution" style={{ color: 'blue', fontSize: '12px', marginLeft: '3px' }} />
               </Popover>
             }
           />

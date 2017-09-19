@@ -1,6 +1,10 @@
 # history
 
 
+## 1.2.0
+
+* `CHANGED` add new prop `addon`
+
 ## 1.1.3
 
 * `CHANGED` margin is adjusted
