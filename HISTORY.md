@@ -1,6 +1,10 @@
 # history
 
 
+## 1.2.1
+
+* `CHANGED` adjust space between text & checkbox
+
 ## 1.2.0
 
 * `CHANGED` add new prop `addon`
