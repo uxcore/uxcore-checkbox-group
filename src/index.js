@@ -6,4 +6,4 @@
  * All rights reserved.
  */
 
-module.exports = require('./CheckboxGroup');
+export default require('./CheckboxGroup');

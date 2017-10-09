@@ -6,8 +6,10 @@
  * All rights reserved.
  */
 
-const Item = require('./CheckboxItem');
-const React = require('react');
+import React from 'react';
+import PropTypes from 'prop-types';
+import Item from './CheckboxItem';
+
 
 const shallowArrayCopy = (a) => {
   const value = a instanceof Array ? [...a] : a;
@@ -15,7 +17,6 @@ const shallowArrayCopy = (a) => {
 };
 
 class CheckboxGroup extends React.Component {
-
   componentWillMount() {
     const me = this;
     let selected = shallowArrayCopy(me.props.value);
@@ -85,12 +86,12 @@ CheckboxGroup.defaultProps = {
 
 // http://facebook.github.io/react/docs/reusable-components.html
 CheckboxGroup.propTypes = {
-  value: React.PropTypes.array,
-  onChange: React.PropTypes.func,
-  disabled: React.PropTypes.bool,
-  className: React.PropTypes.string,
+  value: PropTypes.array,
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 CheckboxGroup.displayName = 'CheckboxGroup';
 
-module.exports = CheckboxGroup;
+export default CheckboxGroup;
