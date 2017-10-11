@@ -6,4 +6,4 @@
  * All rights reserved.
  */
 
-export default require('./CheckboxGroup');
+export default from './CheckboxGroup';
