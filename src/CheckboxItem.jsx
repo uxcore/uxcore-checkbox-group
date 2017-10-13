@@ -1,4 +1,5 @@
-const React = require('react');
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class CheckboxItem extends React.Component {
 
@@ -26,7 +27,7 @@ class CheckboxItem extends React.Component {
         />
         <s />
         <span className={`${prefixCls}-content`} >
-          <span  dangerouslySetInnerHTML={{ __html: me.props.text }} />
+          <span dangerouslySetInnerHTML={{ __html: me.props.text }} />
           {me.props.addon}
         </span>
       </label>
@@ -41,12 +42,12 @@ CheckboxItem.defaultProps = {
 };
 
 CheckboxItem.propTypes = {
-  value: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  prefixCls: React.PropTypes.string,
-  onChange: React.PropTypes.func,
+  value: PropTypes.string,
+  disabled: PropTypes.bool,
+  prefixCls: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 CheckboxItem.displayName = 'CheckboxItem';
 
-module.exports = CheckboxItem;
+export default CheckboxItem;

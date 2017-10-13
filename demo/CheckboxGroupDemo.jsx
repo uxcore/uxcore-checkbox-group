@@ -6,16 +6,14 @@
  * All rights reserved.
  */
 
-const Button = require('uxcore-button');
-const React = require('react');
-const Popover = require('uxcore-popover');
-
-const CheckboxGroup = require('../src');
+import Button from 'uxcore-button';
+import React from 'react';
+import Popover from 'uxcore-popover';
+import CheckboxGroup from '../src';
 
 const Item = CheckboxGroup.Item;
 
 class Demo extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +44,8 @@ class Demo extends React.Component {
           value={this.state.value}
         >
           <Item
-            text="天空天空天空" value="air"
+            text="天空天空天空"
+            value="air"
             addon={
               <Popover overlay={<div>提示</div>}>
                 <i className="kuma-icon kuma-icon-caution" style={{ color: 'blue', fontSize: '12px', marginLeft: '3px' }} />
@@ -65,4 +64,4 @@ class Demo extends React.Component {
   }
 }
 
-module.exports = Demo;
+export default Demo;

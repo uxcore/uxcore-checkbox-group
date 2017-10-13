@@ -6,5 +6,5 @@
  * All rights reserved.
  */
 
- var Demo = require('./CheckboxGroupDemo');
- ReactDOM.render(<Demo/>, document.getElementById('UXCoreDemo'));
+import Demo from './CheckboxGroupDemo';
+ReactDOM.render(<Demo/>, document.getElementById('UXCoreDemo'));
