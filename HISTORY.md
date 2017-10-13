@@ -1,6 +1,10 @@
 # history
 
 
+## 1.2.2
+
+* `CHANGED` fit React@15
+
 ## 1.2.1
 
 * `CHANGED` adjust space between text & checkbox
