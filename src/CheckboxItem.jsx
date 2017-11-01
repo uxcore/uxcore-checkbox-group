@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class CheckboxItem extends React.Component {
-
   handleChange(e) {
     const me = this;
     me.props.onChange(e.currentTarget.checked, me.props.value);
@@ -11,7 +10,7 @@ class CheckboxItem extends React.Component {
     const me = this;
     const { prefixCls } = me.props;
     let disabled = false;
-    if ('disabled' in me.props) {
+    if (me.props.disabled !== undefined) {
       disabled = me.props.disabled;
     } else {
       disabled = me.props.jsxdisabled;

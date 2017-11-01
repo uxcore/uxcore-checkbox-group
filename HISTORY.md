@@ -1,6 +1,10 @@
 # history
 
 
+## 1.2.3
+
+* `FIXED` Item props `disabled` should not work when it is `undefined`
+
 ## 1.2.2
 
 * `CHANGED` fit React@15
