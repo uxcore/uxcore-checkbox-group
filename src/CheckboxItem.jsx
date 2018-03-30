@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 
 class CheckboxItem extends React.Component {
   handleChange(e) {
@@ -16,7 +18,11 @@ class CheckboxItem extends React.Component {
       disabled = me.props.jsxdisabled;
     }
     return (
-      <label className={`${prefixCls}`}>
+      <label
+        className={classnames(`${prefixCls}`, {
+          [`${prefixCls}__disabled`]: disabled,
+        })}
+      >
         <input
           type="checkbox"
           disabled={disabled}

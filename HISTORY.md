@@ -1,6 +1,10 @@
 # history
 
 
+## 1.2.4
+
+* `CHANGED` style adjustment(disabled enhancement)
+
 ## 1.2.3
 
 * `FIXED` Item props `disabled` should not work when it is `undefined`
