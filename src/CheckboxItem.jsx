@@ -10,7 +10,7 @@ class CheckboxItem extends React.Component {
   }
   render() {
     const me = this;
-    const { prefixCls } = me.props;
+    const { prefixCls, className } = me.props;
     let disabled = false;
     if (me.props.disabled !== undefined) {
       disabled = me.props.disabled;
@@ -21,6 +21,7 @@ class CheckboxItem extends React.Component {
       <label
         className={classnames(`${prefixCls}`, {
           [`${prefixCls}__disabled`]: disabled,
+          [className]: !!className,
         })}
       >
         <input
@@ -50,6 +51,7 @@ CheckboxItem.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func,
 };
 

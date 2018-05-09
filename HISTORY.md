@@ -1,6 +1,10 @@
 # history
 
 
+## 1.3.0
+
+* `CHANGED` item support className
+
 ## 1.2.4
 
 * `CHANGED` style adjustment(disabled enhancement)
