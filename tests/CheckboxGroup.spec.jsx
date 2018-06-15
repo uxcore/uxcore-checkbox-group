@@ -20,8 +20,14 @@ function renderWithProps(someProps) {
     { value: 'sea', text: '大海' },
   ];
   assign(props, someProps);
-  const CheckboxGroupItems = items.map(v => (
-    <CheckboxGroupItem disabled={v.disabled} value={v.value} text={v.text} />
+  const CheckboxGroupItems = items.map((v, i) => (
+    <CheckboxGroupItem
+      disabled={v.disabled}
+      value={v.value}
+      text={v.text}
+      addon={'addon'}
+      showAddonWhenChecked={i % 2 === 0}
+    />
   ));
   const wrapper = mount(<CheckboxGroup {...props}>
     {CheckboxGroupItems}
@@ -88,6 +94,13 @@ describe('CheckboxGroup', () => {
     it('should render correctly', (done) => {
       const wrapper = renderWithProps();
       expect(wrapper.find('.kuma-checkbox-group-item').length).to.be(4);
+      done();
+    });
+    it('should render verticalAlign correctly', (done) => {
+      const wrapper = renderWithProps({
+        verticalAlign: true,
+      });
+      expect(wrapper.find('.kuma-checkbox-group-row').length).to.be(4);
       done();
     });
   });
