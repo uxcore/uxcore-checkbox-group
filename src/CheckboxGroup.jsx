@@ -10,7 +10,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './CheckboxItem';
 
-
 const shallowArrayCopy = (a) => {
   const value = a instanceof Array ? [...a] : a;
   return value;
@@ -37,17 +36,25 @@ class CheckboxGroup extends React.Component {
 
   processChild() {
     const me = this;
+    const {
+      value,
+      disabled,
+      verticalAlign,
+    } = me.props;
     const length = React.Children.count(me.props.children);
     if (!length) return false;
     const elements = React.Children.map(me.props.children, (child, index) => {
       if (!!child.type && child.type.displayName === 'CheckboxItem') {
-        const value = me.props.value;
-        return React.cloneElement(child, {
-          jsxdisabled: me.props.disabled,
-          onChange: me.handleChange.bind(me),
-          key: index,
-          checked: ((Array.isArray(value) ? value : [value]).indexOf(child.props.value) !== -1),
-        });
+        return (
+          <span className={`kuma-checkbox-group-${verticalAlign ? 'row' : 'cell'}`}>
+            {React.cloneElement(child, {
+              jsxdisabled: disabled,
+              onChange: me.handleChange.bind(me),
+              key: index,
+              checked: ((Array.isArray(value) ? value : [value]).indexOf(child.props.value) !== -1),
+            })}
+          </span>
+        );
       }
       return null;
     });
@@ -81,6 +88,7 @@ CheckboxGroup.defaultProps = {
   onChange: () => { },
   disabled: false,
   className: 'kuma-checkbox-group',
+  verticalAlign: false,
 };
 
 
@@ -90,6 +98,7 @@ CheckboxGroup.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  verticalAlign: PropTypes.bool,
 };
 
 CheckboxGroup.displayName = 'CheckboxGroup';
