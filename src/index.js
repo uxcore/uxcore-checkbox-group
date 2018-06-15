@@ -6,4 +6,6 @@
  * All rights reserved.
  */
 
-export default from './CheckboxGroup';
+import CheckboxGroup from './CheckboxGroup';
+
+export default CheckboxGroup;

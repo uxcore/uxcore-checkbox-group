@@ -20,6 +20,10 @@ class Demo extends React.Component {
       value: ['air'],
       disabled: false,
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChangeLayout = this.handleChangeLayout.bind(this);
   }
 
   handleChange(value) {
@@ -35,20 +39,38 @@ class Demo extends React.Component {
     });
   }
 
+  handleChangeLayout() {
+    this.setState({
+      verticalAlign: !this.state.verticalAlign,
+    });
+  }
+
   render() {
+    const {
+      disabled,
+      value,
+      verticalAlign,
+    } = this.state;
     return (
-      <div>
+      <div style={{
+        padding: '50px',
+      }}
+      >
         <CheckboxGroup
-          disabled={this.state.disabled}
-          onChange={this.handleChange.bind(this)}
-          value={this.state.value}
+          disabled={disabled}
+          onChange={this.handleChange}
+          value={value}
+          verticalAlign={verticalAlign}
         >
           <Item
             text="天空天空天空"
             value="air"
             addon={
               <Popover overlay={<div>提示</div>}>
-                <i className="kuma-icon kuma-icon-caution" style={{ color: 'blue', fontSize: '12px', marginLeft: '3px' }} />
+                <i
+                  className="kuma-icon kuma-icon-caution"
+                  style={{ color: 'blue', fontSize: '12px', marginLeft: '3px' }}
+                />
               </Popover>
             }
           />
@@ -58,7 +80,8 @@ class Demo extends React.Component {
           <Item text="火车飞机飞机" value="train" />
 
         </CheckboxGroup>
-        <Button onClick={this.handleChange2.bind(this)}>改变 state</Button>
+        <Button onClick={this.handleChange2}>改变 state</Button> &nbsp;
+        <Button onClick={this.handleChangeLayout}>改变布局</Button>
       </div>
     );
   }

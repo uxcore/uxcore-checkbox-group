@@ -8,14 +8,25 @@ class CheckboxItem extends React.Component {
     const me = this;
     me.props.onChange(e.currentTarget.checked, me.props.value);
   }
+
   render() {
     const me = this;
-    const { prefixCls, className } = me.props;
+    const {
+      prefixCls,
+      className,
+      checked,
+      addon,
+      showAddonWhenChecked,
+    } = me.props;
     let disabled = false;
     if (me.props.disabled !== undefined) {
       disabled = me.props.disabled;
     } else {
       disabled = me.props.jsxdisabled;
+    }
+    let showAddon = true;
+    if (!addon || (showAddonWhenChecked && !checked)) {
+      showAddon = false;
     }
     return (
       <label
@@ -27,14 +38,19 @@ class CheckboxItem extends React.Component {
         <input
           type="checkbox"
           disabled={disabled}
-          checked={me.props.checked}
+          checked={checked}
           className="kuma-checkbox"
           onChange={me.handleChange.bind(me)}
         />
         <s />
-        <span className={`${prefixCls}-content`} >
-          <span dangerouslySetInnerHTML={{ __html: me.props.text }} />
-          {me.props.addon}
+        <span className={`${prefixCls}-content`}>
+          <span
+            className="kuma-checkbox-group-item-text"
+            dangerouslySetInnerHTML={{ __html: me.props.text }}
+          />
+          {showAddon ? (
+            <span className="kuma-checkbox-group-item-addon">{addon}</span>
+          ) : null}
         </span>
       </label>
     );
@@ -44,7 +60,10 @@ class CheckboxItem extends React.Component {
 CheckboxItem.defaultProps = {
   value: '',
   prefixCls: 'kuma-checkbox-group-item',
-  onChange() { },
+  onChange() {
+  },
+  addon: null,
+  showAddonWhenChecked: false,
 };
 
 CheckboxItem.propTypes = {
@@ -53,6 +72,8 @@ CheckboxItem.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   onChange: PropTypes.func,
+  addon: PropTypes.node,
+  showAddonWhenChecked: PropTypes.bool,
 };
 
 CheckboxItem.displayName = 'CheckboxItem';
