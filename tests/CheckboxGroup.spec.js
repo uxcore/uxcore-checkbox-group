@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import assign from 'object-assign';
 import TestUtils, {Simulate} from 'react-addons-test-utils';
 import Enzyme, {mount, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import Adapter from 'enzyme-adapter-react-16';
 import CheckboxGroup from '../src';
 import CheckboxGroupItem from '../src/CheckboxItem';
 
