@@ -6,12 +6,11 @@
  * All rights reserved.
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import Item from './CheckboxItem';
+import React from "react";
+import PropTypes from "prop-types";
+import Item from "./CheckboxItem";
 
-
-const shallowArrayCopy = (a) => {
+const shallowArrayCopy = a => {
   const value = a instanceof Array ? [...a] : a;
   return value;
 };
@@ -40,13 +39,16 @@ class CheckboxGroup extends React.Component {
     const length = React.Children.count(me.props.children);
     if (!length) return false;
     const elements = React.Children.map(me.props.children, (child, index) => {
-      if (!!child.type && child.type.displayName === 'CheckboxItem') {
+      if (!!child.type && child.type.displayName === "CheckboxItem") {
         const value = me.props.value;
         return React.cloneElement(child, {
           jsxdisabled: me.props.disabled,
           onChange: me.handleChange.bind(me),
           key: index,
-          checked: ((Array.isArray(value) ? value : [value]).indexOf(child.props.value) !== -1),
+          checked:
+            (Array.isArray(value) ? value : [value]).indexOf(
+              child.props.value
+            ) !== -1
         });
       }
       return null;
@@ -66,32 +68,29 @@ class CheckboxGroup extends React.Component {
 
   render() {
     const me = this;
-    return (
-      <div className={me.props.className}>
-        {me.processChild()}
-      </div>
-    );
+    return <div className={me.props.className}>{me.processChild()}</div>;
   }
 }
 
 CheckboxGroup.Item = Item;
 
 CheckboxGroup.defaultProps = {
+  prefixCls: "kuma-checkbox-group",
   value: [],
-  onChange: () => { },
+  onChange: () => {},
   disabled: false,
-  className: 'kuma-checkbox-group',
+  className: "kuma-checkbox-group"
 };
-
 
 // http://facebook.github.io/react/docs/reusable-components.html
 CheckboxGroup.propTypes = {
+  prefixCls: PropTypes.string,
   value: PropTypes.array,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
-CheckboxGroup.displayName = 'CheckboxGroup';
+CheckboxGroup.displayName = "CheckboxGroup";
 
 export default CheckboxGroup;
