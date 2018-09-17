@@ -75,6 +75,7 @@ class CheckboxGroup extends React.Component {
 CheckboxGroup.Item = Item;
 
 CheckboxGroup.defaultProps = {
+  prefixCls: "kuma-checkbox-group",
   value: [],
   onChange: () => {},
   disabled: false,
@@ -83,6 +84,7 @@ CheckboxGroup.defaultProps = {
 
 // http://facebook.github.io/react/docs/reusable-components.html
 CheckboxGroup.propTypes = {
+  prefixCls: PropTypes.string,
   value: PropTypes.array,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
