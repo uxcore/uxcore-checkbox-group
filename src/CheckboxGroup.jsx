@@ -16,13 +16,13 @@ const shallowArrayCopy = a => {
 };
 
 class CheckboxGroup extends React.Component {
-  componentWillMount() {
-    const me = this;
-    let selected = shallowArrayCopy(me.props.value);
+  constructor(props) {
+    super(props);
+    let selected = shallowArrayCopy(this.props.value);
     if (!Array.isArray(selected)) {
       selected = [selected];
     }
-    me.selected = selected;
+    this.selected = selected;
   }
 
   componentDidUpdate() {
