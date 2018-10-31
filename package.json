@@ -1,6 +1,6 @@
 {
   "name": "uxcore-checkbox-group",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "uxcore-checkbox-group component for uxcore.",
   "repository": "https://github.com/uxcore/uxcore-checkbox-group.git",
   "author": "eternalsky",
@@ -35,7 +35,6 @@
     "console-polyfill": "^0.2.2",
     "enzyme": "^3.0.0",
     "expect.js": "~0.3.1",
-    "kuma-base": "1.x",
     "react": "16.x",
     "react-dom": "16.x",
     "react-test-renderer": "16.x",
@@ -49,6 +48,7 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "object-assign": "^4.0.0",
+    "kuma-base": "1.x",
     "prop-types": "15.x"
   },
   "contributors": [],

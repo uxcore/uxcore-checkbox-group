@@ -49,17 +49,17 @@ class Demo extends React.Component {
             value="air"
             addon={(
               <Popover overlay={(
-<div>
-提示
-</div>
-)}
+                <div>
+                  提示
+                </div>
+              )}
               >
                 <i
-    className="kuma-icon kuma-icon-caution"
-    style={{ color: 'blue', fontSize: '12px', marginLeft: '3px' }}
-  />
-                            </Popover>
-)}
+                  className="kuma-icon kuma-icon-caution"
+                  style={{ color: 'blue', fontSize: '12px', marginLeft: '3px' }}
+                />
+              </Popover>
+            )}
           />
           <Item text="<b>大海大海大海</b>" value="sea" />
           <Item text="陆地陆地陆地" disabled value="land" />
@@ -67,7 +67,7 @@ class Demo extends React.Component {
           <Item text="火车飞机飞机" value="train" />
         </CheckboxGroup>
         <Button onClick={this.handleChange2.bind(this)}>
-改变 state
+          改变 state
         </Button>
       </div>
     );

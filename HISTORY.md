@@ -1,6 +1,10 @@
 # history
 
 
+## 1.4.2
+
+* `CHANGED` import kuma-base/core.less in style
+
 ## 1.3.0
 
 * `CHANGED` item support className
