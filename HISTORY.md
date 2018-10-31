@@ -1,7 +1,7 @@
 # history
 
 
-## 1.4.2
+## 1.4.6
 
 * `CHANGED` import kuma-base/core.less in style
 
